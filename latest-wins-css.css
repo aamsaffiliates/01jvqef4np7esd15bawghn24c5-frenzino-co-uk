@@ -1,0 +1,112 @@
+/* Latest Wins Section Styles */
+.latest-wins-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.wins-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-card-alt);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.wins-table th,
+.wins-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.wins-table th {
+    background-color: var(--bg-dark);
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.wins-table tr:hover td {
+    background-color: var(--bg-card);
+}
+
+.wins-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Add animation for new wins */
+@keyframes highlight {
+    0% {
+        background-color: rgba(255, 152, 0, 0.2);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.wins-table tr:first-child td {
+    animation: highlight 2s ease-out;
+}
+
+/* JavaScript for updating wins in real-time */
+document.addEventListener('DOMContentLoaded', function() {
+    // Array of sample wins to rotate
+    const sampleWins = [
+        { player: 'r***e69', game: 'Gates of Olympus', amount: '£2,105.45', time: 'Just now' },
+        { player: 'd***n23', game: 'Wolf Gold', amount: '£1,781.30', time: 'Just now' },
+        { player: 'g***l55', game: 'Sweet Bonanza', amount: '0.042 BTC', time: 'Just now' },
+        { player: 'p***k78', game: 'Money Train 2', amount: '£3,250.75', time: 'Just now' },
+        { player: 'c***s41', game: 'Fruit Party', amount: '£980.60', time: 'Just now' },
+        { player: 'a***r17', game: 'Book of Dead', amount: '£1,470.25', time: 'Just now' },
+        { player: 'f***z90', game: 'Gonzo\'s Quest', amount: '£2,840.15', time: 'Just now' },
+        { player: 'o***i63', game: 'Bonanza Megaways', amount: '£5,120.80', time: 'Just now' }
+    ];
+    
+    // Function to add a new win
+    function addNewWin() {
+        const winsTable = document.querySelector('.wins-table tbody');
+        if (!winsTable) return;
+        
+        // Get a random win from the sample array
+        const randomWin = sampleWins[Math.floor(Math.random() * sampleWins.length)];
+        
+        // Create a new row
+        const newRow = document.createElement('tr');
+        
+        // Add cells to the row
+        newRow.innerHTML = `
+            <td>${randomWin.player}</td>
+            <td>${randomWin.game}</td>
+            <td>${randomWin.amount}</td>
+            <td>${randomWin.time}</td>
+        `;
+        
+        // Add the new row to the top of the table
+        winsTable.insertBefore(newRow, winsTable.firstChild);
+        
+        // Remove the last row if there are more than 10 rows
+        if (winsTable.children.length > 10) {
+            winsTable.removeChild(winsTable.lastChild);
+        }
+        
+        // Update the time for all other rows
+        const rows = winsTable.children;
+        for (let i = 1; i < rows.length; i++) {
+            const timeCell = rows[i].lastChild;
+            let time = timeCell.textContent;
+            
+            if (time === 'Just now') {
+                timeCell.textContent = '1 min ago';
+            } else if (time.includes('min')) {
+                const minutes = parseInt(time);
+                timeCell.textContent = (minutes + 1) + ' min ago';
+            }
+        }
+    }
+    
+    // Add a new win every 15 seconds
+    setInterval(addNewWin, 15000);
+});

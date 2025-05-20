@@ -1,0 +1,226 @@
+/* Games Portfolio Section Styles */
+.games-portfolio-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Games Stats */
+.games-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.stat-item {
+    background-color: var(--bg-card-alt);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform var(--transition-normal);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* Popular Slots */
+.popular-slots {
+    margin-bottom: var(--spacing-xl);
+}
+
+.popular-slots h3 {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.slot-card {
+    background-color: var(--bg-card-alt);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+.slot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.slot-card:hover .play-button {
+    opacity: 1;
+}
+
+.slot-image {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+.slot-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.slot-card:hover .slot-image img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.play-button i {
+    font-size: 50px;
+    color: var(--secondary-color);
+}
+
+.slot-badge {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.badge-popular {
+    background-color: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.badge-free-spins {
+    background-color: var(--success-color);
+    color: var(--text-primary);
+}
+
+.badge-exclusive {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+.slot-info {
+    padding: var(--spacing-md);
+}
+
+.slot-title {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.slot-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+/* Game Providers */
+.game-providers h3 {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.providers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.provider-logo {
+    text-align: center;
+    transition: transform var(--transition-normal);
+}
+
+.provider-logo:hover {
+    transform: translateY(-5px);
+}
+
+.provider-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: var(--spacing-sm);
+    filter: grayscale(100%);
+    transition: filter var(--transition-normal);
+}
+
+.provider-logo:hover img {
+    filter: grayscale(0%);
+}
+
+.provider-logo span {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .games-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .providers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .games-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .slots-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .providers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

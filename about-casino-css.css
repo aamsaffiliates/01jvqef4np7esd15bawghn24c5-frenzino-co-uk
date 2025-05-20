@@ -1,0 +1,62 @@
+/* About Casino Section Styles */
+.about-casino-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.about-card {
+    background-color: var(--bg-card-alt);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal);
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.about-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+}
+
+.about-highlight {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-lg);
+    border-left: 3px solid var(--secondary-color);
+    padding-left: var(--spacing-md);
+}
+
+.casino-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.fact-item i {
+    color: var(--secondary-color);
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+}
+
+.fact-item span {
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .casino-facts {
+        grid-template-columns: 1fr;
+    }
+}

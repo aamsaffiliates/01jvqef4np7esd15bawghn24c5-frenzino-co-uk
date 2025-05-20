@@ -1,0 +1,54 @@
+/* Why Trust Section Styles */
+.why-trust-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.trust-card {
+    background-color: var(--bg-card-alt);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+.trust-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.trust-icon {
+    font-size: var(--font-size-xxxl);
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.trust-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.trust-card p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+}
